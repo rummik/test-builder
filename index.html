@@ -1,0 +1,92 @@
+<!doctype html>
+<title>Testy Example Test</title>
+<link rel="stylesheet" href="css/style.css">
+
+<div id="wrapper">
+  <div id="editor">
+    <div id="toolbar" class="bar">
+      <div class="row1">
+        <div>
+          <label for="title">Title:</label>
+          <div class="title-wrap"><input id="title" value="Testy Example Test"></div>
+        </div>
+      </div>
+
+      <div class="row2">
+        <div class="items left">
+          <button class="text"><img src="img/textfield.png"></button><button class="image" disabled><img src="img/graphic.png"></button><button class="sound" disabled><img src="img/sound_low.png"></button>
+          <!--<button class="video"><img src="img/video.png"></button>-->
+        </div>
+
+        <!--<button class=""><img src=""></button>-->
+
+        <div class="items right">
+          <button class="save" disabled><img src="img/page_save.png"></button><button class="cancel" disabled><img src="img/cross.png"></button>
+        </div>
+      </div>
+    </div>
+
+    <textarea id="source">=How's this for a header?=
+Here's the quick little PoC for an online test creator.
+
+The first thing you should notice is the automatic timer calculation at the bottom of the question pane -- it automatically calculates how long it should take to read this page of text at 75 WPM, plus a bit for input boxes.  Over on the bottom of the editor pane, we have the option to add/remove time (in seconds) from the total.
+
+And just a quick little note: The parser does a bit more behind-the-scenes work than what is listed here -- this is just a little something explaining the more important things.
+
+_Protip: Prefix numbers with "-" if you want to subtract time and aren't on a browser supporting the number type.  We're using HTML5 here.  (Read: Use the latest version of Google Chrome when trying this)_
+
+=Inputs=
+Use square brackets for input boxes:
+Fill in the [blank].
+
+Want a select box?  Just add commas:
+[Hello, Howdy, Hi, Greetings, Salutations] World!
+
+The order is automatically randomized, and the first item you give it ("Hello") is always the correct answer.
+
+Just for fun, you can click the check answers button at the bottom.  It tells you the percentage of correct answers, and also highlights the incorrect answers in red.
+
+=Math=
+Here's a quick example with 1 + 1:
+< 1 + 1 >
+
+But how about something more complicated?
+< 30 * 12 + (50 - 10) >
+
+Want a find X problem?
+< 2 * [4] >
+
+How about some random numbers?  Just use integer ranges (1..N):
+< 1..10 + 10 >
+
+Random ranges also work in text boxes in find X problems:
+< [1..10] + 10 >
+
+=Images, Audio, Video, and Flash=
+You can embed images, audio, video, and Flash objects, with curly braces.  It's currently incomplete, but here's a cake for reading this far: {cake.png}
+
+=Escaping reserved characters=
+You can escape any reserved character (ex, "[") by typing it twice.
+
+<< 1 + 1 >>
+{{cake.png}}
+[[Hello]]</textarea>
+
+    <div id="status" class="bar">
+      <label for="time">Time:</label> <input id="time" type="number" value="0">
+    </div>
+  </div>
+
+  <div id="lesson">
+    <div id="question"></div>
+    <div id="actions" class="bar">
+      <button id="previous" disabled>&lt; Previous</button>
+      <button id="timer" disabled>0:00</button>
+      <button id="check">Check Answers</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/jquery.js"></script>
+<script src="js/math.js"></script>
+<script src="js/script.js"></script>
